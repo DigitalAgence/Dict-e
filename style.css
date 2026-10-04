@@ -1,111 +1,654 @@
+/* =========================================================
+   RESET
+========================================================= */
+
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #f2efff, #eef8ff);
   min-height: 100vh;
-  padding: 25px 15px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
   color: #222;
+
+  background: linear-gradient(135deg, #f1efff 0%, #eef8ff 100%);
+
+  padding: 25px 15px;
 }
+
+/* =========================================================
+   CONTENEUR
+========================================================= */
 
 .container {
-  max-width: 750px;
-  margin: auto;
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
 }
 
-header {
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
   text-align: center;
   margin-bottom: 25px;
 }
 
-header h1 {
+.logo {
+  width: 65px;
+  height: 65px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 10px;
+
+  border-radius: 20px;
+
+  background: white;
+
   font-size: 34px;
-  margin-bottom: 8px;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-header p {
-  color: #666;
+.header h1 {
+  margin: 0 0 8px;
+
+  font-size: clamp(28px, 5vw, 38px);
 }
+
+.header p {
+  margin: 0;
+
+  color: #666;
+
+  font-size: 16px;
+}
+
+/* =========================================================
+   TABS
+========================================================= */
 
 .tabs {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
   gap: 10px;
+
   margin-bottom: 20px;
 }
 
 .tabs button {
-  flex: 1;
   border: 0;
-  padding: 14px;
-  border-radius: 12px;
+
+  padding: 15px 10px;
+
+  border-radius: 14px;
+
   background: white;
+
   cursor: pointer;
-  font-weight: bold;
+
   font-size: 15px;
+  font-weight: bold;
+
+  color: #333;
+
+  transition: 0.2s ease;
+}
+
+.tabs button:hover {
+  transform: translateY(-2px);
 }
 
 .tabs button.active {
   background: #6548e8;
   color: white;
+
+  box-shadow: 0 7px 20px rgba(101, 72, 232, 0.25);
 }
+
+/* =========================================================
+   SECTIONS
+========================================================= */
 
 .section {
   display: none;
+
   background: white;
-  padding: 25px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  padding: clamp(20px, 4vw, 35px);
+
+  border-radius: 24px;
+
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
 }
 
 .section.active {
   display: block;
 }
 
+/* =========================================================
+   TITRES
+========================================================= */
+
+.section-header {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 25px;
+}
+
+.section-header.centered {
+  display: block;
+  text-align: center;
+}
+
+.section-icon {
+  width: 55px;
+  height: 55px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+
+  background: #f0edff;
+
+  font-size: 28px;
+}
+
+.section-header h2 {
+  margin: 0 0 5px;
+
+  font-size: 25px;
+}
+
+.section-header p {
+  margin: 0;
+
+  color: #777;
+}
+
+/* =========================================================
+   FORMULAIRE
+========================================================= */
+
+.add-box {
+  background: #f8f8fc;
+
+  padding: 20px;
+
+  border-radius: 18px;
+}
+
+.add-box label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-weight: bold;
+}
+
 input {
   width: 100%;
+
   padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  font-size: 18px;
+
+  border: 2px solid #e2e2e8;
+
+  border-radius: 12px;
+
   outline: none;
+
+  font-size: 18px;
+
+  transition: 0.2s;
 }
 
 input:focus {
   border-color: #6548e8;
+
+  box-shadow: 0 0 0 3px rgba(101, 72, 232, 0.1);
 }
 
 .btn {
   border: 0;
+
   padding: 14px 20px;
-  border-radius: 10px;
+
+  border-radius: 12px;
+
   cursor: pointer;
+
   font-size: 16px;
   font-weight: bold;
-  margin-top: 15px;
+
+  transition: 0.2s;
 }
 
-.primary {
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn.primary {
   background: #6548e8;
   color: white;
 }
 
-.secondary {
-  background: #eee;
-  color: #222;
+.btn.secondary {
+  background: #eeeef2;
+  color: #333;
 }
 
-.danger {
-  background: #ffe8e8;
-  color: #d33;
+.btn.full {
+  width: 100%;
+  margin-top: 12px;
 }
 
 .message {
-  margin-top: 15px;
+  min-height: 24px;
+
+  margin-top: 12px;
+
   font-weight: bold;
 }
+
+.tip {
+  margin-top: 20px;
+
+  padding: 16px;
+
+  border-radius: 14px;
+
+  background: #fff8df;
+
+  color: #705800;
+
+  line-height: 1.5;
+}
+
+/* =========================================================
+   CHOIX DU MODE
+========================================================= */
+
+.mode-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 18px;
+
+  margin-top: 25px;
+}
+
+.mode-card {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 22px;
+
+  border: 2px solid transparent;
+
+  border-radius: 20px;
+
+  background: #f8f8fc;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    border-color 0.2s;
+}
+
+.mode-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.mode-visible:hover {
+  border-color: #6548e8;
+}
+
+.mode-hidden:hover {
+  border-color: #159c70;
+}
+
+.mode-icon {
+  width: 60px;
+  height: 60px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background: white;
+
+  font-size: 30px;
+}
+
+.mode-content {
+  flex: 1;
+}
+
+.mode-content h3 {
+  margin: 0 0 8px;
+
+  font-size: 18px;
+}
+
+.mode-content p {
+  margin: 0 0 12px;
+
+  color: #666;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+.mode-level {
+  font-size: 13px;
+
+  font-weight: bold;
+}
+
+.arrow {
+  font-size: 25px;
+  color: #777;
+}
+
+/* =========================================================
+   JEU
+========================================================= */
+
+.hidden {
+  display: none !important;
+}
+
+.game {
+  text-align: center;
+}
+
+.game-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 10px;
+}
+
+.back-button {
+  border: 0;
+
+  background: transparent;
+
+  color: #6548e8;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  padding: 5px;
+}
+
+.score {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.game-mode-title {
+  font-size: 18px;
+
+  font-weight: bold;
+
+  margin-bottom: 15px;
+
+  color: #6548e8;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 14px;
+
+  color: #777;
+
+  margin-bottom: 7px;
+}
+
+.progress {
+  height: 9px;
+
+  background: #eee;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  margin-bottom: 30px;
+}
+
+.progress-bar {
+  width: 0;
+  height: 100%;
+
+  background: #6548e8;
+
+  transition: width 0.4s ease;
+}
+
+/* =========================================================
+   ÉCOUTE
+========================================================= */
+
+.listen {
+  font-size: 65px;
+
+  margin: 20px 0;
+}
+
+.game h2 {
+  margin-bottom: 10px;
+
+  font-size: 25px;
+}
+
+.mode-help {
+  color: #777;
+
+  margin-bottom: 20px;
+}
+
+.visible-word {
+  display: inline-block;
+
+  padding: 18px 28px;
+
+  margin: 5px auto 15px;
+
+  border-radius: 18px;
+
+  background: #f0edff;
+
+  color: #6548e8;
+
+  font-size: clamp(28px, 7vw, 42px);
+
+  font-weight: bold;
+
+  letter-spacing: 1px;
+
+  word-break: break-word;
+}
+
+.listen-button {
+  background: #f0edff;
+
+  color: #6548e8;
+
+  margin-bottom: 20px;
+}
+
+.answer-container {
+  width: 100%;
+
+  max-width: 600px;
+
+  margin: auto;
+}
+
+.answer-input {
+  width: 100%;
+
+  text-align: center;
+
+  font-size: 24px;
+
+  padding: 17px;
+}
+
+.check-button {
+  width: 100%;
+
+  margin-top: 12px;
+}
+
+.feedback {
+  min-height: 65px;
+
+  margin-top: 20px;
+
+  font-size: 19px;
+
+  font-weight: bold;
+}
+
+.correct {
+  color: #209447;
+
+  font-size: 25px;
+}
+
+.wrong {
+  color: #d33;
+
+  font-size: 20px;
+}
+
+.feedback-small {
+  margin-top: 5px;
+
+  color: #555;
+
+  font-size: 15px;
+}
+
+.correct-word {
+  margin-top: 10px;
+
+  color: #555;
+
+  font-size: 17px;
+}
+
+.correct-word strong {
+  color: #6548e8;
+}
+
+/* =========================================================
+   RESULTAT
+========================================================= */
+
+.result {
+  text-align: center;
+
+  padding: 15px 0 5px;
+}
+
+.result-icon {
+  font-size: 70px;
+
+  margin-bottom: 10px;
+}
+
+.result h2 {
+  margin: 0 0 8px;
+}
+
+.result-mode {
+  color: #777;
+}
+
+.final-score {
+  margin: 20px 0 5px;
+
+  font-size: 55px;
+
+  font-weight: bold;
+
+  color: #6548e8;
+}
+
+.final-score span {
+  font-size: 25px;
+
+  color: #888;
+}
+
+.percentage {
+  font-size: 20px;
+
+  font-weight: bold;
+}
+
+.result-message {
+  color: #666;
+
+  margin: 15px 0 25px;
+}
+
+.result-actions {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+}
+
+/* =========================================================
+   LISTE DES MOTS
+========================================================= */
 
 .word-list {
   margin-top: 20px;
@@ -113,106 +656,296 @@ input:focus {
 
 .word-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 14px;
+
+  gap: 12px;
+
+  padding: 13px 15px;
+
   margin-bottom: 10px;
+
+  border-radius: 14px;
+
   background: #f7f7fb;
-  border-radius: 12px;
+}
+
+.word-number {
+  width: 34px;
+  height: 34px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #eae7ff;
+
+  color: #6548e8;
+
+  font-weight: bold;
 }
 
 .word-item strong {
+  flex: 1;
+
   font-size: 18px;
+
+  word-break: break-word;
 }
 
-.game {
-  text-align: center;
+.word-actions {
+  display: flex;
+
+  gap: 7px;
 }
 
-.score {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
+.listen-small,
+.delete-word {
+  border: 0;
 
-.progress {
-  height: 8px;
-  background: #eee;
+  width: 38px;
+  height: 38px;
+
   border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 30px;
+
+  cursor: pointer;
+
+  font-size: 17px;
 }
 
-.progress-bar {
-  width: 0%;
-  height: 100%;
-  background: #6548e8;
-  transition: width 0.3s;
+.listen-small {
+  background: #e9e6ff;
 }
 
-.listen {
-  font-size: 65px;
-  margin: 20px 0;
+.delete-word {
+  background: #ffe8e8;
 }
 
-.game h2 {
-  margin-bottom: 10px;
-}
-
-.instruction {
-  color: #666;
-  margin-bottom: 25px;
-}
-
-.answer-input {
-  max-width: 500px;
-  margin: auto;
-  text-align: center;
-  font-size: 22px;
-}
-
-.feedback {
-  min-height: 35px;
-  margin-top: 20px;
-  font-size: 19px;
-  font-weight: bold;
-}
-
-.correct {
-  color: #209447;
-}
-
-.wrong {
-  color: #d33;
-}
-
-.correct-word {
-  margin-top: 10px;
-  font-size: 18px;
-}
+/* =========================================================
+   EMPTY
+========================================================= */
 
 .empty {
   text-align: center;
+
+  padding: 40px 20px;
+
   color: #777;
-  padding: 25px;
 }
 
-.hidden {
-  display: none;
+.empty-icon {
+  font-size: 50px;
+
+  margin-bottom: 10px;
 }
 
-@media (max-width: 600px) {
-  header h1 {
+.empty h3 {
+  color: #333;
+
+  margin: 0 0 7px;
+}
+
+/* =========================================================
+   TABLETTE
+========================================================= */
+
+@media (max-width: 700px) {
+  body {
+    padding: 15px 10px;
+  }
+
+  .mode-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    border-radius: 18px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 500px) {
+  body {
+    padding: 10px 8px;
+  }
+
+  .header {
+    margin-bottom: 18px;
+  }
+
+  .logo {
+    width: 55px;
+    height: 55px;
+
+    font-size: 28px;
+
+    border-radius: 16px;
+  }
+
+  .header h1 {
     font-size: 27px;
   }
 
+  .header p {
+    font-size: 14px;
+  }
+
   .tabs {
-    flex-direction: column;
+    gap: 6px;
+  }
+
+  .tabs button {
+    padding: 12px 5px;
+
+    font-size: 13px;
+  }
+
+  .section {
+    padding: 18px 14px;
+
+    border-radius: 18px;
+  }
+
+  .section-header {
+    align-items: flex-start;
+  }
+
+  .section-icon {
+    width: 45px;
+    height: 45px;
+
+    font-size: 22px;
+
+    border-radius: 13px;
+  }
+
+  .section-header h2 {
+    font-size: 21px;
+  }
+
+  .mode-card {
+    padding: 17px;
+
+    border-radius: 16px;
+  }
+
+  .mode-icon {
+    width: 48px;
+    height: 48px;
+
+    font-size: 23px;
+
+    border-radius: 14px;
+  }
+
+  .mode-content h3 {
+    font-size: 16px;
+  }
+
+  .mode-content p {
+    font-size: 13px;
+  }
+
+  .arrow {
+    display: none;
+  }
+
+  .game-top {
+    align-items: flex-start;
+  }
+
+  .back-button {
+    font-size: 13px;
+  }
+
+  .score {
+    font-size: 17px;
+  }
+
+  .listen {
+    font-size: 52px;
+
+    margin: 15px 0;
+  }
+
+  .game h2 {
+    font-size: 21px;
+  }
+
+  .visible-word {
+    width: 100%;
+
+    padding: 15px;
+
+    font-size: 30px;
+  }
+
+  .answer-input {
+    font-size: 21px;
+
+    padding: 15px;
   }
 
   .word-item {
+    padding: 11px;
+
+    gap: 8px;
+  }
+
+  .word-item strong {
+    font-size: 16px;
+  }
+
+  .word-number {
+    width: 30px;
+    height: 30px;
+
+    font-size: 13px;
+  }
+
+  .result-icon {
+    font-size: 55px;
+  }
+
+  .final-score {
+    font-size: 45px;
+  }
+
+  .result-actions {
     flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
+  }
+
+  .result-actions .btn {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   TRÈS PETITS ÉCRANS
+========================================================= */
+
+@media (max-width: 350px) {
+  .tabs button span {
+    display: none;
+  }
+
+  .tabs button {
+    font-size: 20px;
+  }
+
+  .mode-card {
+    flex-direction: column;
+
+    text-align: center;
+  }
+
+  .mode-content {
+    width: 100%;
   }
 }
