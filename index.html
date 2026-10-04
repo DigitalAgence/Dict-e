@@ -3,140 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link rel="icon" type="image" href="images/logo.jpg" />
     <link rel="stylesheet" href="style.css" />
-
     <title>Jeu de dictée - Orthographe primaire</title>
   </head>
 
   <body>
     <div class="container">
-      <header class="header">
-        <div class="logo">✏️</div>
-        <h1>Jeu de dictée</h1>
-        <p>Écoute, écris et progresse en orthographe !</p>
+      <header>
+        <h1>🎧 Jeu de dictée</h1>
+        <p>Écoute le mot et écris-le correctement.</p>
       </header>
 
-      <!-- NAVIGATION -->
-      <nav class="tabs">
-        <button class="tab active" data-section="ajouter">
-          ➕ <span>Mes mots</span>
-        </button>
+      <div class="tabs">
+        <button class="tab active" data-section="ajouter">➕ Mes mots</button>
 
-        <button class="tab" data-section="dictée">
-          🎧 <span>Dictée</span>
-        </button>
+        <button class="tab" data-section="jeu">🎧 Dictée</button>
 
-        <button class="tab" data-section="liste">📚 <span>Liste</span></button>
-      </nav>
+        <button class="tab" data-section="liste">📚 Liste</button>
+      </div>
 
-      <!-- =========================
-         AJOUTER
-    ========================== -->
+      <!-- AJOUTER LES MOTS -->
 
       <section id="ajouter" class="section active">
-        <div class="section-header">
-          <div class="section-icon">📝</div>
+        <h2>Ajouter un mot</h2>
 
-          <div>
-            <h2>Mes mots</h2>
-            <p>Ajoute les mots que tu souhaites apprendre.</p>
-          </div>
-        </div>
+        <p>Ajoute les mots que tu veux apprendre.</p>
 
-        <div class="add-box">
-          <label for="wordInput"> Nouveau mot </label>
+        <input
+          type="text"
+          id="wordInput"
+          placeholder="Exemple : extraordinaire"
+          autocomplete="off"
+        />
 
-          <input
-            type="text"
-            id="wordInput"
-            placeholder="Exemple : extraordinaire"
-            autocomplete="off"
-            maxlength="50"
-          />
+        <button class="btn primary" id="addWord">➕ Ajouter</button>
 
-          <button class="btn primary full" id="addWord">
-            ➕ Ajouter le mot
-          </button>
-
-          <div class="message" id="addMessage"></div>
-        </div>
-
-        <div class="tip">
-          💡 <strong>Astuce :</strong> commence avec quelques mots, puis
-          entraîne-toi avec le mode « mots apparents » avant de passer au mode
-          sans aide.
-        </div>
+        <div class="message" id="addMessage"></div>
       </section>
 
-      <!-- =========================
-         DICTÉE
-    ========================== -->
+      <!-- JEU DE DICTÉE -->
 
-      <section id="dictée" class="section">
-        <div class="dictation-choice" id="dictationChoice">
-          <div class="section-header centered">
-            <div class="section-icon">🎧</div>
-
-            <h2>Choisis ton mode de dictée</h2>
-
-            <p>Commence avec une aide, puis teste ta mémoire !</p>
-          </div>
-
-          <div class="mode-grid">
-            <!-- MODE AVEC MOT -->
-            <button class="mode-card mode-visible" id="visibleMode">
-              <div class="mode-icon">👀</div>
-
-              <div class="mode-content">
-                <h3>Dictée avec mots apparents</h3>
-
-                <p>
-                  Le mot est affiché pendant que tu l'écoutes. Idéal pour
-                  apprendre l'orthographe.
-                </p>
-
-                <span class="mode-level"> ⭐ Niveau apprentissage </span>
-              </div>
-
-              <div class="arrow">→</div>
-            </button>
-
-            <!-- MODE SANS MOT -->
-            <button class="mode-card mode-hidden" id="hiddenMode">
-              <div class="mode-icon">🧠</div>
-
-              <div class="mode-content">
-                <h3>Dictée sans mot apparent</h3>
-
-                <p>
-                  Écoute uniquement le mot et écris-le sans regarder la réponse.
-                </p>
-
-                <span class="mode-level"> 🏆 Niveau défi </span>
-              </div>
-
-              <div class="arrow">→</div>
-            </button>
-          </div>
-        </div>
-
-        <!-- JEU -->
-        <div class="game hidden" id="game">
-          <div class="game-top">
-            <button class="back-button" id="backToModes">
-              ← Changer de mode
-            </button>
-
-            <div class="score">⭐ <span id="score">0</span></div>
-          </div>
-
-          <div class="game-mode-title" id="gameModeTitle">Dictée</div>
-
-          <div class="progress-info">
-            <span id="questionNumber">Mot 1</span>
-            <span id="totalWords">/ 0</span>
+      <section id="jeu" class="section">
+        <div class="game">
+          <div class="score">
+            ⭐ Score :
+            <span id="score">0</span>
           </div>
 
           <div class="progress">
@@ -148,31 +60,23 @@
 
             <h2>Prêt pour la dictée ?</h2>
 
-            <p class="instruction">Écoute le mot puis écris-le correctement.</p>
+            <p class="instruction">
+              Le jeu va prononcer un mot. Écris-le sans regarder.
+            </p>
 
             <button class="btn primary" id="startGame">🎮 Commencer</button>
           </div>
         </div>
       </section>
 
-      <!-- =========================
-         LISTE
-    ========================== -->
+      <!-- LISTE -->
 
       <section id="liste" class="section">
-        <div class="section-header">
-          <div class="section-icon">📚</div>
-
-          <div>
-            <h2>Ma liste de mots</h2>
-            <p><span id="wordCount">0</span> mot(s) enregistré(s)</p>
-          </div>
-        </div>
+        <h2>📚 Mes mots</h2>
 
         <div class="word-list" id="wordList"></div>
       </section>
     </div>
-
-    <script src="script.js"></script>
   </body>
+  <script src="script.js"></script>
 </html>
