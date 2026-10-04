@@ -1,0 +1,218 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #f2efff, #eef8ff);
+  min-height: 100vh;
+  padding: 25px 15px;
+  color: #222;
+}
+
+.container {
+  max-width: 750px;
+  margin: auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+header h1 {
+  font-size: 34px;
+  margin-bottom: 8px;
+}
+
+header p {
+  color: #666;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  flex: 1;
+  border: 0;
+  padding: 14px;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.tabs button.active {
+  background: #6548e8;
+  color: white;
+}
+
+.section {
+  display: none;
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.section.active {
+  display: block;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 18px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #6548e8;
+}
+
+.btn {
+  border: 0;
+  padding: 14px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.primary {
+  background: #6548e8;
+  color: white;
+}
+
+.secondary {
+  background: #eee;
+  color: #222;
+}
+
+.danger {
+  background: #ffe8e8;
+  color: #d33;
+}
+
+.message {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.word-list {
+  margin-top: 20px;
+}
+
+.word-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px;
+  margin-bottom: 10px;
+  background: #f7f7fb;
+  border-radius: 12px;
+}
+
+.word-item strong {
+  font-size: 18px;
+}
+
+.game {
+  text-align: center;
+}
+
+.score {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.progress {
+  height: 8px;
+  background: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background: #6548e8;
+  transition: width 0.3s;
+}
+
+.listen {
+  font-size: 65px;
+  margin: 20px 0;
+}
+
+.game h2 {
+  margin-bottom: 10px;
+}
+
+.instruction {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.answer-input {
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+  font-size: 22px;
+}
+
+.feedback {
+  min-height: 35px;
+  margin-top: 20px;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.correct {
+  color: #209447;
+}
+
+.wrong {
+  color: #d33;
+}
+
+.correct-word {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.empty {
+  text-align: center;
+  color: #777;
+  padding: 25px;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 27px;
+  }
+
+  .tabs {
+    flex-direction: column;
+  }
+
+  .word-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+}
